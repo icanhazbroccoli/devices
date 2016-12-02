@@ -9,7 +9,7 @@ defmodule Aggregator do
     # Define workers and child supervisors to be supervised
     children = [
       # Starts a worker by calling: Aggregator.Worker.start_link(arg1, arg2, arg3)
-      worker(Aggregator.Timer, [1]), # 1 sec
+      worker(Aggregator.Timer, [1000]), # 1 sec
       # worker(Aggregator.Receiver, ["0.0.0.0:10001", "0.0.0.0:10002"]), # in and out
     ]
 

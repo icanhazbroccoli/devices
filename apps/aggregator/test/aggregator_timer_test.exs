@@ -14,5 +14,4 @@ defmodule AggregatorTimerTest do
     assert Timer.register_callback(fn -> IO.puts "tick!" end) == :ok
   end
 
-
 end

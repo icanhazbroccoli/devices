@@ -27,9 +27,9 @@ defmodule Aggregator.Timer do
         { :reply, { :skip, "already running" }, state }
       _ ->
         Task.async(fn ->
-          GenServer.cast(__MODULE__, :tick)
+          Process.send({:tick}, :ok, [])
         end)
-        { :reply, :ok, Map.put(state, :timer_state, @timer_state_normal) }
+        {:reply, :ok, Map.put(state, :timer_state, @timer_state_normal)}
     end
   end
 
@@ -49,7 +49,8 @@ defmodule Aggregator.Timer do
     { :reply, :ok, Map.put(state, :callbacks, callbacks ++ [ callback ]) }
   end
 
-  def handle_cast( :tick, state= %{ interval: interval, callbacks: callbacks }) do
+  def handle_info(:tick, state= %{ callbacks: callbacks, interval: interval}) do
+    IO.puts "tick"
     Task.async(fn ->
       Enum.each(callbacks, fn cb ->
         Task.async(fn ->
@@ -57,7 +58,7 @@ defmodule Aggregator.Timer do
         end)
       end)
     end)
-    timer= Process.send_after(__MODULE__, :tick, interval)
+    timer= Process.send_after(self(), :tick, interval)
     {:noreply, Map.put(state, :timer, timer)}
   end
 
