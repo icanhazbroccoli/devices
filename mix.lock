@@ -1,1 +1,2 @@
-%{"gen_stage": {:hex, :gen_stage, "0.9.0", "9daf0b5ae224405e0456b7df5a282a9a958176cdb9b963811ca38140e7e1b3c4", [:mix], []}}
+%{"gen_stage": {:hex, :gen_stage, "0.9.0", "9daf0b5ae224405e0456b7df5a282a9a958176cdb9b963811ca38140e7e1b3c4", [:mix], []},
+  "kafka_ex": {:hex, :kafka_ex, "0.6.1", "09014c37a430e175c6670349dd9951ebba710f7c9163a457dc55314e2e880b13", [:mix], []}}

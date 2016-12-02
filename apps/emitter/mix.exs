@@ -18,7 +18,7 @@ defmodule Emitter.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger], mod: {Emitter, []}]
+    [applications: [:logger, :kafka_ex], mod: {Emitter, []}]
   end
 
   # Dependencies can be Hex packages:
@@ -37,6 +37,7 @@ defmodule Emitter.Mixfile do
   defp deps do
     [
       {:gen_stage, "~> 0.9.0"},
+      {:kafka_ex, "~> 0.6.1"},
     ]
   end
 end

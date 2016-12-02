@@ -12,7 +12,10 @@ defmodule Emitter.Dataset.Consumer do
   end
 
   def handle_events(events, _from, state) do
-    IO.inspect events
+    events
+      |> Enum.each(fn event ->
+        KafkaEx.produce("events", 0, event)
+      end)
     :timer.sleep 1000
     {:noreply, [], state}
   end
