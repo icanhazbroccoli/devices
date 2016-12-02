@@ -21,4 +21,3 @@ defmodule EmitterDatasetProducerTest do
   end
 
 end
-
