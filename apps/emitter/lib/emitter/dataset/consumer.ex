@@ -16,7 +16,7 @@ defmodule Emitter.Dataset.Consumer do
       |> Enum.each(fn event ->
         KafkaEx.produce("events", 0, event)
       end)
-    :timer.sleep 1000
+      :timer.sleep :random.uniform(1000)
     {:noreply, [], state}
   end
 
